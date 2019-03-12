@@ -1,5 +1,4 @@
 .clock {
-  border-radius: 50%;
   background: #fff
     url("https://cssanimation.rocks/images/posts/clocks/ios_clock.svg")
     no-repeat center;
@@ -7,19 +6,19 @@
   height: 20em;
   padding-bottom: 31%;
   position: relative;
-  width: 20em;
+  width: 30em;
 }
 
 .center {
-  background: #000;
+  background: red;
   border-radius: 50%;
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 5%;
-  height: 3%;
+  width: 4%;
+  height: 4%;
   z-index: 10;
 }
 
@@ -34,6 +33,7 @@
 }
 
 .hours {
+  border-radius: 5px;
   background: #000;
   height: 15%;
   position: absolute;
@@ -44,6 +44,7 @@
 }
 
 .minutes {
+  border-radius: 5px;
   background: #000;
   height: 24%;
   position: absolute;
@@ -54,11 +55,12 @@
 }
 
 .seconds {
-  background: #000;
+  border-radius: 2px;
+  background: red;
   height: 33%;
   left: 49.5%;
   position: absolute;
-  top: 23%;
+  top: 120px;
   transform-origin: 50% 80%;
   width: 1%;
   z-index: 8;
