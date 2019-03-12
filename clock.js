@@ -1,3 +1,7 @@
+initLocalClocks();
+setUpMinuteHands();
+moveSecondHands();
+
 function initLocalClocks() {
   // Get the local time using JS
   var date = new Date;
@@ -32,4 +36,48 @@ function initLocalClocks() {
         }
     }
   }
+}
+
+function setUpMinuteHands() {
+  var containers = document.querySelectorAll('.minutes-container');
+  var secondAngle = containers[0].getAttribute("data-second-angle");
+  if (secondAngle > 0) {
+    var delay = (((360 - secondAngle) / 6) + 0.1) * 1000;
+    setTimeout(function() {
+      moveMinuteHands(containers);
+    }, delay);
+  }
+}
+
+function moveMinuteHands(containers) {
+  for (var i = 0; i < containers.length; i++) {
+    containers[i].style.webkitTransform = 'rotateZ(6deg)';
+    containers[i].style.transform = 'rotateZ(6deg)';
+  }
+   setInterval(function() {
+     for (var i = 0; i < containers.length; i++) {
+       if (containers[i].angle === undefined) {
+         containers[i].angle = 12;
+       } else {
+         containers[i].angle += 6;
+       }
+       containers[i].style.webkitTransform = 'rotateZ(' + containers[i].angle + 'deg)';
+       containers[i].style.transform = 'rotateZ('+ containers[i].angle +'deg)';
+     }
+   }, 60000);
+}
+
+function moveSecondHands() {
+  var containers = document.querySelectorAll('.seconds-container');
+  setInterval(function() {
+    for (var i = 0; i < containers.length; i++) {
+      if (containers[i].angle === undefined) {
+        containers[i].angle = 6;
+      } else {
+        containers[i].angle += 6;
+      }
+      containers[i].style.webkitTransform = 'rotateZ('+ containers[i].angle +'deg)';
+      containers[i].style.transform = 'rotateZ('+ containers[i].angle +'deg)';
+    }
+  }, 1000);
 }
